@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<style>
+  .alert {
+   border-radius: 2px;
+   box-shadow:2px 3px 10px 3px #888888;
+    padding: 20px;
+    background-color: #c1ed23;
+    color: rgb(17, 16, 16);
+  }
+  
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .closebtn:hover {
+    color: black;
+  }
+</style>
+<body>
+
+  <div class="parent-div" style="height: 100%;width: 100%;">
+  </div>
+
+  <div class="header-div"
+    style="display: block;padding:20px 0px ;background-color: rgb(105, 186, 216); height: 40%;width:100%;position: relative;text-decoration: none; box-shadow: 2px 3px 10px 3px;">
+    <h4>Expense Tracker</h4>
+
+  </div>
+
+  {% for message in messages %}
+  <div class="alert">
+
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <strong>Caution</strong> {{message}}
+
+  </div>
+  {% endfor %}
+  <!-- <h1 class="text-center my-3">LOGIN</h1> -->
+  <h1 style="margin: 5% 0%  0% 31%  ;">LOGIN</h1>
+  <h5 style="margin: 0% 0%  0% 31%  ; padding: 5px;">Please enter your email and password!</h5>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <!-- <div class="card bg-info text-black"> -->
+        <div
+          style="border: .25px solid rgb(1, 3, 9);padding: 30px; border-radius: 10px; box-shadow: 3px 5px 10px 5px #535357 ;">
+          <!-- <div class="card-body"> -->
+          <form action="/signin_user/" method="POST">
+            {% csrf_token %}
+
+
+            <div class="mb-3" style="box-shadow: 2px 3px 10px 3px #888888">
+              <input id="email" type="email" class="form-control" placeholder="Enter Employee email.." name="email">
+            </div>
+
+            <div class="mb-3" style="box-shadow: 2px 3px 10px 3px #888888">
+              <input id="password" type="password" class="form-control" placeholder="Enter your password.."
+                name="password">
+            </div>
+            <input type="checkbox" onclick="myFunction()"> Show password
+
+            <script>
+              function myFunction() {
+                var x = document.getElementById("password");
+                if (x.type === "password") {
+                  x.type = "text";
+                } else {
+                  x.type = "password";
+                }
+              }
+            </script>
+            <div>
+              <!-- <p class="mb-0"><a href="#!" class="text-blue-50 fw-bold" -->
+
+              <p class="mb-0"><a href="#!" class="text-blue-50 " style="box-shadow: 2px 3px 10px 3px #888888"> Forgot
+                  password</a>
+              </p>
+            </div>
+
+            <div class="container text-center">
+              <button class="btn btn-primary" style="box-shadow: 2px 3px 10px 3px #888888">
+                Login
+              </button>
+            </div>
+            <div>
+              <p class="mb-0" style=" margin: 0px 0px 0px 30%;">Don't have an account? <a href="/signup/user/"
+                  class="text-blue-50 " style="box-shadow: 2px 3px 10px 3px #888888">Sign Up</a>
+              </p>
+            </div>
+
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
